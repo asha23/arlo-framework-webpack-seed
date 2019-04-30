@@ -1,29 +1,25 @@
-// ===========================================================================================================
-// INCLUDES
-// ===========================================================================================================
+// Bootstrap
 
+@import "bootstrap/bootstrap";
+
+// Fontawesome
+
+$fa-font-path: "../fonts";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/brands";
+
+
+// Theme specific
+
+@import "core/globals/colours";
+@import "core/globals/globals";
 @import "core/mixins";
+@import "core/globals/typography";
 
-// BOOTSTRAP LAYOUT
 
-@import "bootstrap/custom-variables";
-@import "bootstrap/custom-bootstrap";
 
-// FONT AWESOME
 
-@import "fontawesome/font-awesome.css";
 
-// LIGHTGALLERY
 
-@import "lightgallery/lightgallery.css";
-
-.lg-outer .lg-item {
-    background: url("../images/loading.gif") no-repeat scroll center center transparent;
-}
-
-// PARTIALS
-
-@import "core/globals";
-@import "core/typography";
-@import "core/colours";
-@import "core/blocks";

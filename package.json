@@ -33,7 +33,7 @@
     "flickity": "^2.2.0",
     "fontfaceobserver": "^2.1.0",
     "fullpage.js": "^3.0.4",
-    "gulp": "4.0.0",
+    "gulp": "^4.0.1",
     "gulp-asset-hash": "^1.0.1",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
