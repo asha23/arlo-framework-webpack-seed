@@ -27,17 +27,3 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_sub_page( array( 'page_title' => 'Footer', 'menu_title' => 'Footer', 'parent_slug' => $parent['menu_slug'] ) );
 
 }
-
-// if ( function_exists( 'acf_add_options_sub_page' ) ){
-// 	acf_add_options_sub_page(array(
-// 		'title'      => 'Work Template',
-// 		'parent'     => 'edit.php?post_type=our-work',
-// 		'capability' => 'manage_options' // or edit_posts
-// 	));
-
-// 	acf_add_options_sub_page(array(
-// 		'title'      => 'Clients Template',
-// 		'parent'     => 'edit.php?post_type=clients',
-// 		'capability' => 'manage_options' // or edit_posts
-// 	));
-// }

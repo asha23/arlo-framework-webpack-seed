@@ -102,12 +102,12 @@ function seed_theme_support() {
 
 	// registering wp3+ menus
 
-	// register_nav_menus(
-	// 	array(
-	// 		'top-menu' => __( 'Top Menu', 'SEEDtheme' ),   // main nav in header
-	// 		'footer-links' => __( 'Footer Links', 'SEEDtheme' ) // secondary nav in footer
-	// 	)
-	// );
+	register_nav_menus(
+		array(
+			'main-nav' => __( 'The Main Menu', 'SEEDtheme' ),   // main nav in header
+			'footer-links' => __( 'Footer Links', 'SEEDtheme' ) // secondary nav in footer
+		)
+	);
 }
 
 //==============================================================================
@@ -125,29 +125,6 @@ function seed_excerpt_more($more) {
 	// edit here if you like
 	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __( 'Read', 'SEEDtheme' ) . get_the_title($post->ID).'">'. __( '<p>&nbsp;</p><button class="btn btn-info">Read more <i class="fa fa-angle-double-right"></i></button>', 'SEEDtheme' ) .'</a>';
 }
-
-function crunchify_remove_version() {
-	return '';
-}
-add_filter('the_generator', 'crunchify_remove_version');
- 
-remove_action('wp_head', 'rest_output_link_wp_head', 10);
-remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
-remove_action('template_redirect', 'rest_output_link_header', 11, 0);
- 
-remove_action ('wp_head', 'rsd_link');
-remove_action( 'wp_head', 'wlwmanifest_link');
-remove_action( 'wp_head', 'wp_shortlink_wp_head');
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 ); 
-remove_action( 'admin_print_scripts', 'print_emoji_detection_script' ); 
-remove_action( 'wp_print_styles', 'print_emoji_styles' ); 
-remove_action( 'admin_print_styles', 'print_emoji_styles' );
- 
-//Disable gutenberg style in Front
-function remove_block_css(){
-	wp_dequeue_style( 'wp-block-library' );
-}
-add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );	
 
 //==============================================================================
 // ADD BODY CLASSES
@@ -258,78 +235,3 @@ function custom_login_logo() {
 add_action('login_head', 'custom_login_logo');
 
 add_filter('acf/settings/remove_wp_meta_box', '__return_true');
-
-
-//show_admin_bar( true );
-
-// ADMIN STYLES
-
-add_action('admin_head', 'custom_admin_style');
-
-function custom_admin_style() {
-  echo '<style>
-  #edittag {
-	  width:100%!important;
-	  max-width:100%!important;
-  }
-  </style>';
-}
-
-// IMAGE SIZES
-
-add_image_size( 'main-teaser', 600, 380, false );
-add_image_size( 'main-teaser-news', 635, 428, false );
-
-// REMOVE PREFIX FROM ARCHIVE TITLE
-
-function my_theme_archive_title( $title ) {
-    if ( is_category() ) {
-        $title = single_cat_title( '', false );
-    } elseif ( is_tag() ) {
-        $title = single_tag_title( '', false );
-    } elseif ( is_author() ) {
-        $title = '<span class="vcard">' . get_the_author() . '</span>';
-    } elseif ( is_post_type_archive() ) {
-        $title = post_type_archive_title( '', false );
-    } elseif ( is_tax() ) {
-        $title = single_term_title( '', false );
-    }
-  
-    return $title;
-}
- 
-add_filter( 'get_the_archive_title', 'my_theme_archive_title' );
-
-
-
-function rudr_filter_by_the_author() {
-	$params = array(
-		'name' => 'author', // this is the "name" attribute for filter <select>
-		'show_option_all' => 'All authors' // label for all authors (display posts without filter)
-	);
- 
-	if ( isset($_GET['user']) )
-		$params['selected'] = $_GET['user']; // choose selected user by $_GET variable
- 
-	wp_dropdown_users( $params ); // print the ready author list
-}
- 
-add_action('restrict_manage_posts', 'rudr_filter_by_the_author');
-
-
-
-function getFirstPara($string){
-    $string = substr($string,0, strpos($string, "</p>")+4);
-    $string = str_replace("<p>", "", str_replace("<p/>", "", $string));
-    return $string;
-}
-
-function limit_text($text, $limit) {
-	if (str_word_count($text, 0) > $limit) {
-		$words = str_word_count($text, 2);
-		$pos = array_keys($words);
-		$text = substr($text, 0, $pos[$limit]) . '...';
-	}
-	return $text;
-}
-

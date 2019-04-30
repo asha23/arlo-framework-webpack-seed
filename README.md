@@ -1,24 +1,42 @@
-# Gulp 4 + Webpack 4 + Babel + BrowserSync + Font Awesome 5
+# wp-seed
 
-All the tasks are done via Gulp. Webpack is just used for ES6 Import/Export as Gulp can't do it to my best of knowledge. Apart from ES6 Import/Export, Gulp was able to do all my other work that I wanted so I have mainly used Gulp. That being said, you can modify the webpack config to your preferences from `webpack` folder and use webpack specific plugins as you need.
+WordPress seed theme using Bootstrap 3, Gulp and Bower
 
-For Live reloading, Browsersync has been used. For ES6 Transpilation, Babel has been used. For SourceMaps, Gulp & Webpack both have been used. For Icon Fonts, Font Awesome 5 has been used with Sass/CSS Workflow.
+This is a simple Bootstrap seed theme with Bower and Gulp dependency and build management. I have removed all bloat and unnecessary code from this theme, so it doesn't have multilanguage support, widgets, sidebars or any other WordPress bloat. It should be considered a base theme for developing using Advanced Custom Fields and using WordPress as a pure CMS.
 
-## Setup
+This utilises Yarn for dependency management - https://yarnpkg.com/
 
-- Install [Node](https://nodejs.org/)
-- Optionally, also install [Yarn](https://yarnpkg.com/) or use *Npm* that comes with Node pre-installed
-- Install Gulp globally through `npm install -g gulp@next`
-- Install Webpack globally through `npm install -g webpack`
-- Fork this project
-- Clone the forked project (Yours!)
-- `cd` to the cloned project
-- Install all [packages](./package.json) with `npm install` or `yarn install`
+Once you have installed it, simply run:
 
-## Usage
+	yarn   
+	gulp
 
-- **Build the Project and Serve locally (for Production)** - `npm start` or `yarn start`. The Production port is `8000`.
-- **Build the Project and Serve locally (for Development)** - `npm run dev` or `yarn run dev`. The Development port is `3000`.
-- **Exporting the Project to zip file** - `npm run export` or `yarn run export`
+	gulp watch
 
-Important Note: **Don't** run these npm scripts simultaneously.
+And you should be good to go.
+
+#### Javascript libraries I've included
+
+* jQuery
+* Bootstrap Sass
+* Lightgallery
+* Fontawesome
+* Imagesloaded
+* Slick Carousel
+* Respond.js
+* Enquire.js
+* MatchHeight
+* Cycle 2
+* Isotope
+
+Feel free to add your own via Bower. These may need to be connected up using the gulpfile. There is also a Babel workflow in the build pipeline.
+
+#### Advanced Custom Fields
+
+This theme probably requires Advanced Custom Fields Professional. Which if you don't have already, you should get.
+
+Remove the contents of ```acf-json``` if you want to start from scratch. But this simply sets up some initial theme options.
+
+#### General
+
+The views folder is intended as a place to add content types for the theme.

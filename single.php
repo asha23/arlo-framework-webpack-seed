@@ -1,6 +1,5 @@
 <?php
-
-    get_header();
-	include( locate_template( 'views/loops/loop-single-post.php', false, false ) );
-	get_footer(); 
+	get_header();
+	get_template_part( 'views/loops/loop', 'generic' );
+	get_footer();
 ?>

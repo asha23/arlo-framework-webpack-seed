@@ -3,7 +3,7 @@
 
 <div class="container">
 	<section class="row">
-		<?php get_template_part( 'views/global/main', '404' ); ?>
+		<?php get_template_part( 'views/common/main', '404' ); ?>
 	</section>
 </div>
 
